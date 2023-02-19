@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login - Cantvas</title>
+    <link th:href="@{/css/output.css}" rel="stylesheet">
+</head>
+
+<body class="bg-slate-100 flex flex-col items-center justify-center">
+    <div class="w-full max-w-xs">
+        <div th:if="${error}">
+            Unable to login. Check your username and password.
+        </div>
+        <p class="text-gray-700 text-sm font-bold">New here? Click
+            <a class="text-red-300 visited:text-red-500" th:href="@{/register}">here</a> to register.
+        </p>
+        <form method="POST" th:action="@{/login}" id="loginForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username: </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text" name="username" id="username" /><br />
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password: </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="password" name="password" id="password" /><br />
+            </div>
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button">
+                    Sign In
+                </button>
+                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                    Forgot Password?
+                </a>
+            </div>
+            <!-- <input type="submit" value="Login" /> -->
+        </form>
+    </div>
+</body>
+
+</html>

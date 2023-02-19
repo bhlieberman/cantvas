@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Enrolled Students</title>
+    </head>
+    <body>
+        <p>Names and emails:</p>
+        <div class="students-list" th:each="teacher: ${teachersInfo}">
+            <p th:text="${teacher.name}"></p>
+            <p th:text="${teacher.email}"></p>
+        </div>
+    </body>
+</html>

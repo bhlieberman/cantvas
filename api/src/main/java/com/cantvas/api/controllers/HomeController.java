@@ -33,10 +33,4 @@ public class HomeController {
     public String courses() {
         return "courses";
     }
-
-    @GetMapping("home")
-    public String home() {
-        return "home";
-    }
-
 }

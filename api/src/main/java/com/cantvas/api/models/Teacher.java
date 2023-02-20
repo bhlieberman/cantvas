@@ -2,7 +2,7 @@ package com.cantvas.api.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AccessLevel;
@@ -24,5 +24,6 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long teacherId;
 
-    // List<Course> assignedCourse;
+    @OneToMany
+    List<Course> assignedCourse;
 }

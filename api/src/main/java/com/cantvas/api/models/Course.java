@@ -27,12 +27,12 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // // @OneToMany
-    // // @JoinTable(name = "enrolled_students", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
-    // final List<Student> enrolled;
+    @OneToMany
+    // @JoinTable(name = "enrolled_students", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+    final List<Student> enrolled;
 
-    // // @ManyToMany
+    @OneToMany
     // // @JoinTable(name = "assigned_instructors", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "teacher_id"))
-    // final List<Teacher> instructor;
+    final List<Teacher> instructor;
 
 }

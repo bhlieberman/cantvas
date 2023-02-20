@@ -513,6 +513,14 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -557,6 +565,10 @@ video {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {

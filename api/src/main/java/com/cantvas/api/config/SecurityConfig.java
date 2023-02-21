@@ -2,6 +2,7 @@ package com.cantvas.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -47,6 +48,7 @@ public class SecurityConfig {
                 .hasRole("USER")
                 .requestMatchers("/", "/**").permitAll()
                 .and()
+                .cors().and().csrf().disable()
                 .formLogin(form -> {
                     form.loginPage("/login")
                             .defaultSuccessUrl("/courses", true);
@@ -55,7 +57,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
+    WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(toH2Console());
     }
 }

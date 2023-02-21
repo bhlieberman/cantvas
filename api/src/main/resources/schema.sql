@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS Teacher (
 CREATE TABLE IF NOT EXISTS Course (
     id identity,
     name varchar(25) not null,
-    description text
+    description text,
+    begin_date date,
+    end_date date
 );
 
 CREATE TABLE IF NOT EXISTS enrolled_students (

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Course (
     end_date date
 );
 
-CREATE TABLE IF NOT EXISTS enrolled_students (
+CREATE TABLE IF NOT EXISTS course_enrolled (
     course_id identity,
     enrolled_id varchar(50) not null
 );

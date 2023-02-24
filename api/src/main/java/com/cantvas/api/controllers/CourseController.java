@@ -30,7 +30,7 @@ import com.cantvas.api.models.Student;
 @Slf4j
 @RestController
 @RequestMapping("/api/courses")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost://localhost:3000/details/**"})
 public class CourseController {
 
     @Autowired

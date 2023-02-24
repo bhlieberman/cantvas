@@ -12,16 +12,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.cantvas.api.models.SiteUser;
 import com.cantvas.api.repositories.SiteUserRepository;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@EnableWebMvc
+public class SecurityConfig implements WebMvcConfigurer {
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -43,12 +48,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .cors().and().csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/courses", "/teachers", "/students")
                 .hasRole("USER")
                 .requestMatchers("/", "/**").permitAll()
                 .and()
-                .cors().and().csrf().disable()
                 .formLogin(form -> {
                     form.loginPage("/login")
                             .defaultSuccessUrl("/courses", true);
@@ -56,8 +61,13 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers(toH2Console());
+    // @Bean
+    // WebSecurityCustomizer webSecurityCustomizer() {
+    //     return (web) -> web.ignoring().requestMatchers(toH2Console());
+    // }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
     }
 }

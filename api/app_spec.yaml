@@ -1,0 +1,7 @@
+name: Cantvas
+services:
+- github:
+    branch: master
+    deploy_on_push: true
+    repo: cantvas
+  dockerfile_path: Dockerfile

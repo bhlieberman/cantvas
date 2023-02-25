@@ -50,11 +50,6 @@ public class StudentController {
         model.addAttribute("studentInfo", students);
     }
 
-    @ModelAttribute(name = "studentCons")
-    public Student student(final String name, final String email) {
-        return new Student(name, email);
-    }
-
     @GetMapping
     public String allStudents() {
         log.info("retrieving student view");

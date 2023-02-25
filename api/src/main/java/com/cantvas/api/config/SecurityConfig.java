@@ -2,6 +2,7 @@ package com.cantvas.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -61,10 +62,11 @@ public class SecurityConfig implements WebMvcConfigurer {
         return http.build();
     }
 
-    // @Bean
-    // WebSecurityCustomizer webSecurityCustomizer() {
-    //     return (web) -> web.ignoring().requestMatchers(toH2Console());
-    // }
+    @Bean
+    @Profile("development")
+    WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers(toH2Console());
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

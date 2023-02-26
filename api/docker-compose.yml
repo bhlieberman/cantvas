@@ -1,0 +1,6 @@
+name: Cantvas
+services:
+  web:
+    build: .
+  db:
+    image: oscarfonts/h2

@@ -26,5 +26,5 @@ public class Student {
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL)
-    final List<Assignment> assignments;
+    List<Assignment> assignments;
 }

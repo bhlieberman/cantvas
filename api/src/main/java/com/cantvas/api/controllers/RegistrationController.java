@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cantvas.api.repositories.SiteUserRepository;
 import com.cantvas.api.config.RegistrationForm;
+import com.cantvas.api.models.SiteUser;
 
 @Controller
 @RequestMapping("/register")
 public class RegistrationController {
-    
+
     @Autowired private SiteUserRepository siteUserRepo;
     @Autowired private PasswordEncoder passwordEncoder;
 

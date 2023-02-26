@@ -36,11 +36,6 @@ public class TeacherController {
         model.addAttribute("teachersInfo", teachers);
     }
 
-    @ModelAttribute(name = "teacherCons")
-    public Teacher teacher(final String name, final String email) {
-        return new Teacher(name, email);
-    }
-
     @GetMapping
     public String allTeachers() {
         log.info("retrieving teacher view");

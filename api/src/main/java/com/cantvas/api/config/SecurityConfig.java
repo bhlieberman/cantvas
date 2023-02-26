@@ -47,7 +47,6 @@ public class SecurityConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    @Profile("production")
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors().and().csrf().disable()

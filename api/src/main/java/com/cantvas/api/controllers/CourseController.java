@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,9 @@ public class CourseController {
     CourseRepository courseRepo;
 
     @GetMapping("/info")
-    public Course getCourseInfo(@RequestParam Long courseId) {
+    public ResponseEntity<Course> getCourseInfo(@RequestParam Long courseId) {
         Optional<Course> course_desc = courseRepo.findById(courseId);
-        return course_desc.get();
+        return ResponseEntity.of(course_desc);
     }
 
     @GetMapping("/info/enrolled")

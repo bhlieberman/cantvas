@@ -39,7 +39,7 @@ public class SecurityConfig implements WebMvcConfigurer {
         return username -> {
             SiteUser user = userRepo.findByUsername(username);
             if (user != null) {
-                log.info("found user");
+                log.info("found user:" + user);
                 return user;
             }
             throw new UsernameNotFoundException("User" + username + "not found!");
@@ -47,6 +47,7 @@ public class SecurityConfig implements WebMvcConfigurer {
     }
 
     @Bean
+    @Profile("production")
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors().and().csrf().disable()
